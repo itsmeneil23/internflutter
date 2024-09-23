@@ -202,16 +202,19 @@ class _ScreenSignupState extends State<ScreenSignup> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Text('Congrats',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                Text('You have won'),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon([
-    Icons.home,
-    Icons.favorite,
-    Icons.search,
+                    Image.asset([
+    'assets/images/Frame 27.png',
+    'assets/images/Frame 28.png',
+    'assets/images/Frame 29.png',
   ][Random().nextInt(3)]),
                   ],
                 ),
+                Text('Check your mail to claim it'),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -225,7 +228,7 @@ class _ScreenSignupState extends State<ScreenSignup> {
                             )
                           );
                     },
-                    child: Text('Proceed'),
+                    child: Text('OK',style: TextStyle(color: MyColors.c1,fontWeight: FontWeight.bold),),
                     ),
                   ],
                 )

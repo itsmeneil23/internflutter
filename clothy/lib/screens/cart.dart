@@ -3,6 +3,7 @@ import 'package:clothy/colors.dart';
 import 'package:clothy/screens/home.dart';
 import 'package:clothy/screens/login.dart';
 import 'package:clothy/screens/mypay.dart';
+import 'package:clothy/screens/buy.dart';
 class MyCart{
   static bool _00=false;
   static void meth2(){
@@ -77,12 +78,15 @@ class _ScreenCartState extends State<ScreenCart> {
                     actions: [
                       TextButton(
                         onPressed: () {
-                          Navigator.of(context).push(
+                          Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(
         builder: (ctx){
           return ScreenLogin();
         }
-      )
+      ),
+      (route) {
+        return false;
+      },
     );
                           //Navigator.pop(context); // Dismiss the dialog
                         },
@@ -174,18 +178,43 @@ class _ScreenCartState extends State<ScreenCart> {
           padding: const EdgeInsets.all(15.0),
           child: //Column(
           //   children: [
-              Visibility(
-                visible: MyCart._00 && _00,
-                child: Row(
-                  children: [
-                    Text('cart'),
-                    IconButton(onPressed: () {
-                      MyHome.set_00('0');
-                              MyCart.meth2();
-                              setting();
-                    }, icon: Icon(Icons.delete)),
-                  ],
-                )),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx){
+          return ScreenBuy();
+        }
+      )
+    );
+                },
+                child: Visibility(
+                  visible: MyCart._00 && _00,
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(border:Border(top:BorderSide())),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(Icons.image_sharp),
+                            Column(
+                              children: [
+                                Text('itmnm'),
+                            Text('mrp'),
+                              ],
+                            ),
+                            IconButton(onPressed: () {
+                              MyHome.set_00('0');
+                                      MyCart.meth2();
+                                      setting();
+                            }, icon: Icon(Icons.delete)),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )),
+              ),
               
           //   ]
           //   )

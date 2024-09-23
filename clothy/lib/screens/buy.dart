@@ -8,6 +8,9 @@ class ScreenBuy extends StatefulWidget {
 }
 
 class _ScreenBuyState extends State<ScreenBuy> {
+  final _locationController=TextEditingController();
+  final _phoneController=TextEditingController();
+  bool _error=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,67 +20,88 @@ class _ScreenBuyState extends State<ScreenBuy> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('itmnm'),
+              Container(
+                decoration: BoxDecoration(border: Border.all()),
+                child: Column(
+                  children: [
+                    Text('itmnm'),
               const SizedBox(
                   height: 20,
                 ),
-              Icon(Icons.anchor,size: 100,),
+              Icon(Icons.image_sharp,size: 100,),
               const SizedBox(
                   height: 20,
                 ),
               Text('ct'),
-              const SizedBox(
-                  height: 20,
-                ),
-              TextFormField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(100)),
-                      ),
-                  hintText: 'loctn',
+                  ],
                 ),
               ),
               const SizedBox(
                   height: 20,
                 ),
               TextFormField(
+                controller: _locationController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(100)),
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
                       ),
-                  hintText: 'phno',
+                  hintText: 'Location',
+                ),
+              ),
+              const SizedBox(
+                  height: 20,
+                ),
+              TextFormField(
+                controller: _phoneController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                      ),
+                  hintText: 'Phone No +91',
                 ),
               ),
               const SizedBox(
                   height: 20,
                 ),
               
-              ElevatedButton(
-                style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all(Colors.white),
-                      backgroundColor: MaterialStateProperty.all(MyColors.c1)),
-                onPressed: () {
-                showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return SimpleDialog(
-                title: Text('Mode Of Payment'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Custom content here
-                  ElevatedButton(onPressed: () {
-                    meth1();
-                  }, child: Text('Net Banking')),
-                  ElevatedButton(onPressed: () {
-                    meth1();
-                  }, child: Text('UPI')),
-                  ElevatedButton(onPressed: () {
-                    meth1();
-                  }, child: Text('Credit / Debit Card')),
+                  Visibility(
+                    visible: _error,
+                    child: Text('Invalid entry',style: TextStyle(color: Colors.red),)),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                          foregroundColor: MaterialStateProperty.all(Colors.white),
+                          backgroundColor: MaterialStateProperty.all(MyColors.c1)),
+                    onPressed: () {
+                      validator();
+                    if(!_error){
+                      showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                  return SimpleDialog(
+                    title: Text('Mode Of Payment'),
+                    children: [
+                      // Custom content here
+                      ElevatedButton(
+                        onPressed: () {
+                        meth1();
+                      }, child: Text('Net Banking',style: TextStyle(color: MyColors.c1),)),
+                      ElevatedButton(onPressed: () {
+                        meth1();
+                      }, child: Text('UPI',style: TextStyle(color: MyColors.c1),)),
+                      ElevatedButton(onPressed: () {
+                        meth1();
+                      }, child: Text('Credit / Debit Card',style: TextStyle(color: MyColors.c1),)),
+                    ],
+                  );
+                              },
+                            );
+                    }
+                  }, child: Text('Pay')),
                 ],
-              );
-            },
-          );
-              }, child: Text('pay'))
+              )
             ]
           //         children: [
               
@@ -134,12 +158,26 @@ class _ScreenBuyState extends State<ScreenBuy> {
                         onPressed: () {
                           Navigator.pop(context); // Dismiss the dialog
                         },
-                        child: Text('OK'),
+                        child: Text('OK',style: TextStyle(color: MyColors.c1),),
                       ),
                     ],
                         );
                       },
                     );
+            }
+            void validator()
+            {
+              if(_locationController.text=='' || _phoneController.text=='')
+              {
+                setState(() {
+                  _error=true;
+                });
+              }
+              else{
+                setState(() {
+                  _error=false;
+                });
+              }
             }
             }
 // import 'package:flutter/material.dart';

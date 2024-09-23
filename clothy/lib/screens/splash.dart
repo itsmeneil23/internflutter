@@ -1,3 +1,4 @@
+import 'package:clothy/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:clothy/screens/login.dart';
 
@@ -25,10 +26,12 @@ class _ScreenSplashState extends State<ScreenSplash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF394048),
       body: Center(
         child: Image.asset(
           'assets/images/logo.jpg',
-          height: 200,
+          scale: 5,
+          //height:double.infinity,
         ),
       ),
     );
@@ -39,8 +42,8 @@ class _ScreenSplashState extends State<ScreenSplash> {
     super.dispose();
   }
   Future<void> gotoLogin() async{
-    await Future.delayed(Duration(seconds: 3));
-    Navigator.of(context).push(
+    await Future.delayed(Duration(seconds: 2));
+    Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (ctx){
           return ScreenLogin();

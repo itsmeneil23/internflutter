@@ -1,9 +1,9 @@
-import 'dart:ffi';
+//import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 //import 'package:flutter_application_sample/screens/profile.dart';
 import 'package:clothy/screens/login.dart';
-import 'package:clothy/screens/mypay.dart';
+//import 'package:clothy/screens/mypay.dart';
 import 'package:clothy/screens/buy.dart';
 
 import 'package:clothy/screens/cart.dart';
@@ -135,12 +135,15 @@ class _ScreenHomeState extends State<ScreenHome> {
                     actions: [
                       TextButton(
                         onPressed: () {
-                          Navigator.of(context).push(
+                          Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(
         builder: (ctx){
           return ScreenLogin();
         }
-      )
+      ),
+      (route) {
+        return false;
+      },
     );
                           //Navigator.pop(context); // Dismiss the dialog
                         },
@@ -165,20 +168,54 @@ class _ScreenHomeState extends State<ScreenHome> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Text('usr'),
+            const SizedBox(
+                height: 20,
+              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                width: 20,
+              ),
+                Text('Hello, User!',style: TextStyle(fontSize: 32,fontStyle: FontStyle.italic),),
+              ],
+            ),
+            const SizedBox(
+                height: 20,
+              ),
+            Text('Check out our new collections'),
+            const SizedBox(
+                height: 20,
+              ),
             Column(
               children: [
-                Text('cat1'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                width: 20,
+              ),
+                    Text('Casual Wear',style: TextStyle(fontSize: 20,decoration: TextDecoration.underline),),
+                  ],
+                ),
+                const SizedBox(
+                height: 10,
+              ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
+                      const SizedBox(
+                width: 20,
+              ),
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
+                          Image.asset('assets/images/clothes/casuals/men1.png',width:130,height:165),
                           Text('itmnm'),
                           Row(
                             children: [
@@ -214,13 +251,17 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
 
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
+                          Image.asset('assets/images/clothes/casuals/men2.png',width:130,height:165),
                           Text('itmnm'),
                           Row(
                             children: [
@@ -238,13 +279,16 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
 
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
+                          Image.asset('assets/images/clothes/casuals/women1.png',width:130,height:165),
                           Text('itmnm'),
                           Row(
                             children: [
@@ -262,12 +306,15 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
+                          Image.asset('assets/images/clothes/casuals/women2.png',width:130,height:165),
                           Text('itmnm'),
                           Row(
                             children: [
@@ -285,26 +332,46 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
                     ],
                   ),
                 ),
               ],
             ),
+            const SizedBox(
+                height: 10,
+              ),
             
             Column(
               children: [
-                Text('cat2'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                width: 20,
+              ),
+                    Text('Shirt',style: TextStyle(fontSize: 20,decoration: TextDecoration.underline),),
+                  ],
+                ),
+                const SizedBox(
+                height: 10,
+              ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
+                      const SizedBox(
+                width: 20,
+              ),
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
-                          Text('itmnm'),
+                          Image.asset('assets/images/clothes/shirt/denim.png',width:130,height:165),
+                          Text('Denims'),
                           Row(
                             children: [
                             ElevatedButton(style: ButtonStyle(
@@ -321,14 +388,17 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
 
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
-                          Text('itmnm'),
+                          Image.asset('assets/images/clothes/shirt/linen.png',width:130,height:165),
+                          Text('Linens'),
                           Row(
                             children: [
                             ElevatedButton(style: ButtonStyle(
@@ -345,14 +415,17 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
 
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
-                          Text('itmnm'),
+                          Image.asset('assets/images/clothes/shirt/floral.jpeg',width:130,height:165),
+                          Text('Floral Printed'),
                           Row(
                             children: [
                             ElevatedButton(style: ButtonStyle(
@@ -369,13 +442,16 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
-                          Text('itmnm'),
+                          Image.asset('assets/images/clothes/shirt/t_shirt.jpeg',width:130,height:165),
+                          Text('T-Shirts'),
                           Row(
                             children: [
                             ElevatedButton(style: ButtonStyle(
@@ -392,25 +468,45 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
                     ],
                   ),
                 ),
               ],
             ),
+            const SizedBox(
+                height: 10,
+              ),
 
             Column(
               children: [
-                Text('cat1'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                width: 20,
+              ),
+                    Text('Jeans',style: TextStyle(fontSize: 20,decoration: TextDecoration.underline),),
+                  ],
+                ),
+                const SizedBox(
+                height: 10,
+              ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
+                      const SizedBox(
+                width: 20,
+              ),
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
+                          Image.asset('assets/images/clothes/jeans/1.png',width:130,height:165),
                           Text('itmnm'),
                           Row(
                             children: [
@@ -428,13 +524,16 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
 
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
+                          Image.asset('assets/images/clothes/jeans/2.png',width:130,height:165),
                           Text('itmnm'),
                           Row(
                             children: [
@@ -452,13 +551,16 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
 
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
+                          Image.asset('assets/images/clothes/jeans/3.png',width:130,height:165),
                           Text('itmnm'),
                           Row(
                             children: [
@@ -476,12 +578,15 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
+                          Image.asset('assets/images/clothes/jeans/4.png',width:130,height:165),
                           Text('itmnm'),
                           Row(
                             children: [
@@ -499,26 +604,46 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
                     ],
                   ),
                 ),
               ],
             ),
+            const SizedBox(
+                height: 10,
+              ),
 
             Column(
               children: [
-                Text('cat1'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                width: 20,
+              ),
+                    Text('Accessories',style: TextStyle(fontSize: 20,decoration: TextDecoration.underline),),
+                  ],
+                ),
+                const SizedBox(
+                height: 10,
+              ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
+                      const SizedBox(
+                width: 20,
+              ),
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
-                          Text('itmnm'),
+                          Image.asset('assets/images/clothes/accessories/belt.png',width:130,height:165),
+                          Text('Belts'),
                           Row(
                             children: [
                             ElevatedButton(style: ButtonStyle(
@@ -535,14 +660,17 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
 
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
-                          Text('itmnm'),
+                          Image.asset('assets/images/clothes/accessories/scarf.png',width:130,height:165),
+                          Text('Scarf'),
                           Row(
                             children: [
                             ElevatedButton(style: ButtonStyle(
@@ -559,14 +687,17 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
 
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
-                          Text('itmnm'),
+                          Image.asset('assets/images/clothes/accessories/cap.png',width:130,height:165),
+                          Text('Caps'),
                           Row(
                             children: [
                             ElevatedButton(style: ButtonStyle(
@@ -583,13 +714,16 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
                       Container(
-                        decoration: BoxDecoration(border: Border.all(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)),border: Border.all(
 
                         )),
                         child: Column(children: [
-                          Icon(Icons.account_box,size: 200,),
-                          Text('itmnm'),
+                          Image.asset('assets/images/clothes/accessories/shoes.png',width:130,height:165),
+                          Text('Shoes'),
                           Row(
                             children: [
                             ElevatedButton(style: ButtonStyle(
@@ -606,11 +740,17 @@ class _ScreenHomeState extends State<ScreenHome> {
                           ],),
                         ],),
                       ),
+                      const SizedBox(
+                width: 20,
+              ),
                     ],
                   ),
                 ),
               ],
             ),
+            const SizedBox(
+                height: 10,
+              ),
             
           ],
         ),
